@@ -35,12 +35,29 @@ export default class Serverest {
         })
     }
 
-    static salvarBearer(res){
+    static salvarBearer(res) {
         Cypress.env('bearer', res.body.authorization.slice(7))
     }
-// Produtos
+    // Produtos
 
-    static buscarProdutos(){
+    static buscarProdutos() {
         return cy.rest('GET', URL_PRODUTOS)
+    }
+
+    static cadastrarProdutoComSucesso() {
+        return cy.request({
+            method: 'POST',
+            url: URL_PRODUTOS,
+            failOnStatusCode: true,
+            header: {
+                aauthorization: Cypress.env('bearer')
+            },
+            body: {
+                "nome": "Logitech MX Vertical",
+                "preco": 470,
+                "descricao": "Mouse",
+                "quantidade": 381
+            }
+        })
     }
 }

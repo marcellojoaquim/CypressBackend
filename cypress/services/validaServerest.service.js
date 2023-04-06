@@ -28,10 +28,21 @@ export default class ValidaServerest {
     }
 
     //PRODUTOS
+
     static validarBuscaDeProdutos(res){
         expect(res).to.be.a('object')
         expect(res.body.quantidade).to.be.a('number')
-        expect(res.body.produtos).to.be.greaterThan(3)
+        expect(res.body.quantidade).to.be.greaterThan(0)
+        expect(res.body.produtos[0]).to.be.haveOwnProperty('nome')
+        expect(res.body.produtos[0]).to.be.haveOwnProperty('preco')
+        expect(res.body.produtos[0]).to.be.haveOwnProperty('descricao')
     }
 
+    static validarCadastroDeProdutoComSucesso(res){
+        expect(res).to.be.a('object')
+        expect(res.body.message).to.be.a('string')
+        expect(res.body.message).to.be.eq('Cadastro realizado com sucesso')
+        expect(res.body).to.haveOwnProperty('_id')
+
+    }
 }
