@@ -19,5 +19,9 @@ export default class ValidaServerest {
         expect(res.body).to.haveOwnProperty('authorization')
     }
 
-    
+    static validarBuscaDeUsuarioPorId(res){
+        
+    }
+
+
 }
