@@ -26,4 +26,21 @@ export default class Serverest {
     static logar(usuario) {
         return cy.rest('POST', URL_LOGIN, usuario)
     }
+
+    static cadastrarUsuario() {
+        cy.request('POST', URL_USUARIOS).then(res => {
+            cy.wrap({
+
+            }).as('usuarioPost')
+        })
+    }
+
+    static salvarBearer(res){
+        Cypress.env('bearer', res.body.authorization.slice(7))
+    }
+// Produtos
+
+    static buscarProdutos(){
+        return cy.rest('GET', URL_PRODUTOS)
+    }
 }
