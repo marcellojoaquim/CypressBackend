@@ -14,7 +14,8 @@
   "author": "Marcello",
   "license": "ISC",
   "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
     "cypress": "^9.7.0",
-    "faker": "^6.6.6"
+    "faker": "^5.5.3"
   }
 }

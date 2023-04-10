@@ -22,12 +22,25 @@ describe('Casos de teste sobre a rota /usuarios da API Serverest resultados vál
         })
     })
 
-    it.only('Deve criar um novo usuário com sucesso', () => {
+    it('Deve criar um novo usuário com sucesso', () => {
         Serverest.cadastrarUsuarioComSucesso().then(res => {
             ValidaServerest.validaCadastroDeUsuarioComSucesso(res)
         })
     })
 
+    it.only('Deve buscar usuário de um arquivo json', () =>{
+        cy.fixture('usuario.json').then(json => {
+            let usuario = {
+                email: json.email,
+                password: json.password
+            }
+            Serverest.logar(usuario).then( res => {
+                ValidaServerest.validaLoginComSucesso(res)
+                Serverest.salvarBearer(res)
+            })
+            
+        })
+    })
 
 })
 

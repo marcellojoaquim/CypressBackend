@@ -11,6 +11,16 @@ export default class Factory {
             "quantidade": faker.datatype.number()
         }
     }
+
+    static criaNovoUsuarioAdmTrue() {
+        return {
+            "nome": faker.name.findName(),
+            "email": faker.internet.email(),
+            "password": "teste",
+            "administrador": "true"
+        }
+    }
+
 }
 
 

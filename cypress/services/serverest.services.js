@@ -28,17 +28,14 @@ export default class Serverest {
     }
 
     static cadastrarUsuarioComSucesso() {
+        let usuario = Factory.criaNovoUsuarioAdmTrue();
        return cy.request({
             method: 'POST',
             url: URL_USUARIOS,
-            body: {
-                "nome": "Teste Cypress",
-                "email": "cyber@qa.com.br",
-                "password": "teste",
-                "administrador": "true"
-              },
+            body: usuario,
             failOnStatusCode: true,
         })
+        
     }
 
     static salvarBearer(res) {
@@ -61,6 +58,7 @@ export default class Serverest {
             },
             body: produto
         })
+        
     }
 
     
