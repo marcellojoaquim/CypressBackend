@@ -1,4 +1,4 @@
-
+import Factory from "../fixtures/factory"
 const URL_USUARIOS = '/usuarios'
 const URL_LOGIN = '/login'
 const URL_PRODUTOS = '/produtos'
@@ -27,11 +27,17 @@ export default class Serverest {
         return cy.rest('POST', URL_LOGIN, usuario)
     }
 
-    static cadastrarUsuario() {
-        cy.request('POST', URL_USUARIOS).then(res => {
-            cy.wrap({
-
-            }).as('usuarioPost')
+    static cadastrarUsuarioComSucesso() {
+       return cy.request({
+            method: 'POST',
+            url: URL_USUARIOS,
+            body: {
+                "nome": "Teste Cypress",
+                "email": "cyber@qa.com.br",
+                "password": "teste",
+                "administrador": "true"
+              },
+            failOnStatusCode: true,
         })
     }
 
@@ -45,6 +51,7 @@ export default class Serverest {
     }
 
     static cadastrarProdutoComSucesso() {
+        let produto = Factory.gerarProduto()
         return cy.request({
             method: 'POST',
             url: URL_PRODUTOS,
@@ -52,12 +59,9 @@ export default class Serverest {
             auth: {
                 bearer: Cypress.env('bearer')
             },
-            body: {
-                "nome": "Logitech MXA Vertical",
-                "preco": 470,
-                "descricao": "Mouse",
-                "quantidade": 381
-            }
+            body: produto
         })
     }
+
+    
 }

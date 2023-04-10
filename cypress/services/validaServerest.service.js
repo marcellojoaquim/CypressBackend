@@ -45,4 +45,11 @@ export default class ValidaServerest {
         expect(res.body).to.haveOwnProperty('_id')
 
     }
+
+    static validaCadastroDeUsuarioComSucesso(res){
+        expect(res).to.be.a('object')
+        expect(res.body.message).to.be.eq('Cadastro realizado com sucesso')
+        expect(res.body).to.haveOwnProperty('_id')
+        expect(res.status).to.eq(201)
+    }
 }

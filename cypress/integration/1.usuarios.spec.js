@@ -22,8 +22,10 @@ describe('Casos de teste sobre a rota /usuarios da API Serverest resultados vál
         })
     })
 
-    it('Deve criar um novo usuário com sucesso', () => {
-        Serverest.cadastrarUsuario()
+    it.only('Deve criar um novo usuário com sucesso', () => {
+        Serverest.cadastrarUsuarioComSucesso().then(res => {
+            ValidaServerest.validaCadastroDeUsuarioComSucesso(res)
+        })
     })
 
 
@@ -33,7 +35,7 @@ describe('Casos de teste sobre a rota /usuarios da API Serverest resultados inv�
 
     //it()
 
-    it.only('Não deve postar um novo usuário administrador existente', () => {
+    it('Não deve postar um novo usuário administrador existente', () => {
         cy.postarUsuarioSemSucesso().then(res => {
             ValidaServerest.validaPostSemSucesso(res)
         })
