@@ -11,18 +11,22 @@ describe('Casos de teste sobre a rota /produtos da API Serverest resultados vál
         })
     })
 
-    it('Deve cadastrar um novo produto com sucesso', () => {
-        //Login para salvar bearer
-        Serverest.buscarUsuarioParaLogin()
-        cy.get('@usuarioLogin').then(usuario => {
-            Serverest.logar(usuario).then(res => {
-                ValidaServerest.validaLoginComSucesso(res)
-                Serverest.salvarBearer(res)
-
-                Serverest.cadastrarProdutoComSucesso().then(res => {
-                    ValidaServerest.validarCadastroDeProdutoComSucesso(res)
+    context('Logar com sucesso', () => {
+        beforeEach('LOgar', () => {
+            Serverest.buscarUsuarioParaLogin()
+            cy.get('@usuarioLogin').then(usuario => {
+                Serverest.logar(usuario).then(res => {
+                    ValidaServerest.validaLoginComSucesso(res)
+                    Serverest.salvarBearer(res)
                 })
             })
         })
+        it('Deve cadastrar um novo produto com sucesso', () => {
+            //Login para salvar bearer
+            Serverest.cadastrarProdutoComSucesso().then(res => {
+                ValidaServerest.validarCadastroDeProdutoComSucesso(res)
+            })
+        })
+
     })
 })

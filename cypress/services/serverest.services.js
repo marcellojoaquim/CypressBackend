@@ -49,11 +49,11 @@ export default class Serverest {
             method: 'POST',
             url: URL_PRODUTOS,
             failOnStatusCode: true,
-            header: {
-                aauthorization: Cypress.env('bearer')
+            auth: {
+                bearer: Cypress.env('bearer')
             },
             body: {
-                "nome": "Logitech MX Vertical",
+                "nome": "Logitech MXA Vertical",
                 "preco": 470,
                 "descricao": "Mouse",
                 "quantidade": 381
