@@ -30,6 +30,7 @@ maneira sequencial simulando caminhos lógicos.
 - VsCode
 - XMind
 - Desgn Pattern Service Object
+- Biblioteca Fakerjs
 
 # Links Úteis
 
