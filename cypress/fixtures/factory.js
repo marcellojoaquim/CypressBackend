@@ -21,6 +21,18 @@ export default class Factory {
         }
     }
 
+    static criaNovoUsuarioAdmFalse() {
+        return {
+            "nome": faker.name.findName(),
+            "email": faker.internet.email(),
+            "password": "teste",
+            "administrador": "false"
+        }
+    }
+
+    static gerarInteiroAleatorio(){
+        return faker.datatype.number(10);
+    }
 }
 
 

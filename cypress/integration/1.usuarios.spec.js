@@ -2,6 +2,7 @@
 
 import Serverest from "../services/serverest.services"
 import ValidaServerest from "../services/validaServerest.service"
+import Factory from "../fixtures/factory"
 
 describe('Casos de teste sobre a rota /usuarios da API Serverest resultados válidos', () => {
 
@@ -28,7 +29,7 @@ describe('Casos de teste sobre a rota /usuarios da API Serverest resultados vál
         })
     })
 
-    it.only('Deve buscar usuário de um arquivo json', () =>{
+    it('Deve buscar usuário de um arquivo json', () =>{
         cy.fixture('usuario.json').then(json => {
             let usuario = {
                 email: json.email,
@@ -39,6 +40,14 @@ describe('Casos de teste sobre a rota /usuarios da API Serverest resultados vál
                 Serverest.salvarBearer(res)
             })
             
+        })
+    })
+
+    it.only('Deve buscar e salvar um usuário num arq json', ()=>{
+        let inteiro = Factory.gerarInteiroAleatorio()
+        Serverest.buscarUsuario().then(res => {
+            cy.log(JSON.stringify(res.body.usuarios[inteiro]))
+            cy.writeFile('./cypress/fixtures/usuario.json', res.body.usuarios[inteiro])
         })
     })
 

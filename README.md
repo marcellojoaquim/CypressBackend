@@ -35,7 +35,7 @@ maneira sequencial simulando caminhos lógicos.
 # Links Úteis
 
 - Serverest API: https://serverest.dev/
-
+- Faker: https://fakerjs.dev/
 
 # Autor
 
