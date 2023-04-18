@@ -1,5 +1,3 @@
-
-
 export default class ValidaServerest {
 
     //Validações das ações que podemos realizar na API
