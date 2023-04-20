@@ -23,7 +23,20 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+import Ajv from "ajv"
 
+const ajv = new Ajv({allErrors: true, verbose: true, strict: false})
+
+Cypress.Commands.add('validacaoDeContrato', (res, schema, status) => {
+    cy.fixture(`schemas/${schema}/${status}.json`).then (schema => {
+        const valida = ajv.compile(schema)
+        const valido = valida(res.body)
+
+        if(!valido){
+            
+        }
+    })
+})
 Cypress.Commands.add('postarUsuarioSemSucesso', () => {
     return cy.request({
         method: 'POST',

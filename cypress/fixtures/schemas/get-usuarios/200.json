@@ -1,0 +1,46 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "type": "object",
+    "required": [
+        "quantidade",
+        "usuarios"
+    ],
+    "additionalProperties": true,
+    "properties": {
+        "quantidade": {
+            "type": "integer"
+        },
+        "usuarios": {
+            "type": "array",
+            "additionalItems": true,
+            "items": {
+                "type": "object",
+                "required": [
+                    "nome",
+                    "email",
+                    "password",
+                    "administrador",
+                    "_id"
+                ],
+                "additionalProperties": true,
+                "properties": {
+                    "nome": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "administrador": {
+                        "type": "string"
+                    },
+                    "_id": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

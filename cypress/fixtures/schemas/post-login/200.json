@@ -1,0 +1,17 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "type": "object",
+    "required": [
+        "message",
+        "authorization"
+    ],
+    "additionalProperties": true,
+    "properties": {
+        "message": {
+            "type": "string"
+        },
+        "authorization": {
+            "type": "string"
+        }
+    }
+}

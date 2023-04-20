@@ -1,0 +1,46 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "type": "object",
+    "required": [
+        "quantidade",
+        "produtos"
+    ],
+    "additionalProperties": true,
+    "properties": {
+        "quantidade": {
+            "type": "integer"
+        },
+        "produtos": {
+            "type": "array",
+            "additionalItems": true,
+            "items": {
+                "type": "object",
+                "required": [
+                    "nome",
+                    "preco",
+                    "descricao",
+                    "quantidade",
+                    "_id"
+                ],
+                "additionalProperties": true,
+                "properties": {
+                    "nome": {
+                        "type": "string"
+                    },
+                    "preco": {
+                        "type": "integer"
+                    },
+                    "descricao": {
+                        "type": "string"
+                    },
+                    "quantidade": {
+                        "type": "integer"
+                    },
+                    "_id": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
