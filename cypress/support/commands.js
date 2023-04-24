@@ -25,16 +25,22 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import Ajv from "ajv"
 
-const ajv = new Ajv({allErrors: true, verbose: true, strict: false})
+const ajv = new Ajv({ allErrors: true, verbose: true, strict: false })
 
 Cypress.Commands.add('validacaoDeContrato', (res, schema, status) => {
-    cy.fixture(`schemas/${schema}/${status}.json`).then (schema => {
+    cy.fixture(`schemas/${schema}/${status}.json`).then(schema => {
         const valida = ajv.compile(schema)
         const valido = valida(res.body)
 
-        if(!valido){
-            
+        if (!valido) {
+            var errors = '';
+            for (let each in valida.errors) {
+                let err = valida.errors[each];
+                errors += `\n${err.instancePath} ${err.message}, but receive ${typeof err.data}`;
+            }
+            throw new Error('Erros encontrados na validação de contrato: '+ errors)
         }
+        return true
     })
 })
 Cypress.Commands.add('postarUsuarioSemSucesso', () => {

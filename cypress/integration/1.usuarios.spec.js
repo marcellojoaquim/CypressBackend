@@ -8,9 +8,9 @@ describe('Casos de teste sobre a rota /usuarios da API Serverest resultados vál
 
     it('Deve retonar os usuarios cadastrados', () => {
         Serverest.buscarUsuario().then(res => {
-            cy.validacaoDeContrato(res, 'get-susuarios', 200)
+            cy.validacaoDeContrato(res, 'get-usuarios', 200)
             ValidaServerest.validaBuscaDeUsuarios(res)
-            cy.log(res)
+    
         })
     })
 

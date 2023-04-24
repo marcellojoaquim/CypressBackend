@@ -6,25 +6,7 @@ export default class ValidaServerest {
     //Validar a realização de login
 
     static validaBuscaDeUsuarios(res) {
-        expect(res).to.be.a('object')
-        expect(res.body).exist
-        expect(res.body.quantidade).to.be.a('number')
-        expect(res.body).to.have.property('usuarios')
-        expect(res.body.usuarios).to.be.a('array')
-        let usuarios = res.body.usuarios
-        for(let each in usuarios) {
-            expect(usuarios[each]).to.have.property('nome')
-            expect(usuarios[each].nome).to.be.a('string')
-            expect(usuarios[each]).to.have.property('email')
-            expect(usuarios[each].email).to.be.a('string')
-            expect(usuarios[each]).to.have.property('password')
-            expect(usuarios[each].password).to.be.a('string')
-            expect(usuarios[each]).to.haveOwnProperty.property('administrador')
-            expect(usuarios[each].administrador).to.be.a('string')
-            expect(usuarios[each]).to.have.property('_id')
-            expect(usuarios[each]._id).to.be.a('string')
-        }
-    //expect(res.body.quantidade).to.be.greaterThan(0)
+        expect(res.body.quantidade).to.be.greaterThan(0)
     }
 
     static validaLoginComSucesso(res) {

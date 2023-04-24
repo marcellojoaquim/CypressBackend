@@ -2,8 +2,8 @@
 
 # Sobre
 
-Projeto de automação de testes de API REST da Serverest, api de código aberto que simula
-uma loja virtual que tem como objetivo principal servir de material de estudos de testes de API.
+Projeto de automação de testes de API REST Serverest, desenvolvido durante a trilha de conhecimento da CompassUOL, esta é uma api de código aberto que simula uma loja virtual que tem como objetivo principal servir de material de estudos de testes de API.
+
 ## Verbos
 - GET
 - POST
