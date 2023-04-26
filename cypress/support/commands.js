@@ -23,14 +23,17 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-import Ajv from "ajv"
+import Ajv from 'ajv'
+import addFormats  from 'ajv/dist/types'
 
 const ajv = new Ajv({ allErrors: true, verbose: true, strict: false })
-
+//addFormats(ajv)
 Cypress.Commands.add('validacaoDeContrato', (res, schema, status) => {
-    cy.fixture(`schemas/${schema}/${status}.json`).then(schema => {
+    
+    cy.fixture(`schemas/${schema}/${status}.json`).then( schema => {
         const validador = ajv.compile(schema)
         const valido = validador(res.body)
+        console.log(validador)
 
         if (!valido) {
             var errors = '';
@@ -40,7 +43,7 @@ Cypress.Commands.add('validacaoDeContrato', (res, schema, status) => {
             }
             throw new Error('Erros encontrados na validação de contrato: ' + errors)
         }
-        return true
+        return 'Contrato válido'
     })
 })
 

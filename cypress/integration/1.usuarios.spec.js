@@ -6,9 +6,9 @@ import Factory from "../fixtures/factory"
 
 describe('Casos de teste sobre a rota /usuarios da API Serverest resultados válidos', () => {
 
-    it('Deve retonar os usuarios cadastrados', () => {
+    it.only('Deve retonar os usuarios cadastrados', () => {
         Serverest.buscarUsuario().then(res => {
-            cy.validacaoDeContrato(res, 'get-usuarios', 200)
+            cy.validacaoDeContrato(res, 'get-usuarios', 200).then( res => expect(res).to.be.eq('Contrato válido'))
             ValidaServerest.validaBuscaDeUsuarios(res)
     
         })
@@ -44,7 +44,7 @@ describe('Casos de teste sobre a rota /usuarios da API Serverest resultados vál
         })
     })
 
-    it.only('Deve buscar e salvar um usuário num arq json', ()=>{
+    it('Deve buscar e salvar um usuário num arq json', ()=>{
         let inteiro = Factory.gerarInteiroAleatorio()
         Serverest.buscarUsuario().then(res => {
             cy.log(JSON.stringify(res.body.usuarios[inteiro]))
