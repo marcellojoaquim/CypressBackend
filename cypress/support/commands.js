@@ -29,20 +29,22 @@ const ajv = new Ajv({ allErrors: true, verbose: true, strict: false })
 
 Cypress.Commands.add('validacaoDeContrato', (res, schema, status) => {
     cy.fixture(`schemas/${schema}/${status}.json`).then(schema => {
-        const valida = ajv.compile(schema)
-        const valido = valida(res.body)
+        const validador = ajv.compile(schema)
+        const valido = validador(res.body)
 
         if (!valido) {
             var errors = '';
-            for (let each in valida.errors) {
-                let err = valida.errors[each];
+            for (let each in validador.errors) {
+                let err = validador.errors[each];
                 errors += `\n${err.instancePath} ${err.message}, but receive ${typeof err.data}`;
             }
-            throw new Error('Erros encontrados na validação de contrato: '+ errors)
+            throw new Error('Erros encontrados na validação de contrato: ' + errors)
         }
         return true
     })
 })
+
+
 Cypress.Commands.add('postarUsuarioSemSucesso', () => {
     return cy.request({
         method: 'POST',
